@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preventivo - Atelier Nove</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#9c2b3a;          /* bordeaux */
+    --secondary:#c45d4a;        /* terracotta */
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --cream:#f8f4ec; --ink:#211a17; --body:#5a4f48; --muted:#9b8f86; --line:#e7ded0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#ddd6c9;font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;padding:24px 0;}
+
+  .page{
+    width:210mm;min-height:297mm;background:var(--cream);margin:0 auto 24px;
+    padding:16mm 19mm 14mm;position:relative;box-shadow:0 14px 44px rgba(33,26,23,.18);
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+
+  .save{
+    position:fixed;top:16px;right:16px;z-index:50;font:600 14px var(--sans);
+    display:inline-flex;align-items:center;gap:8px;padding:11px 17px;cursor:pointer;
+    background:var(--primary);color:#fff;border:0;border-radius:10px;
+    box-shadow:0 10px 26px rgba(156,43,58,.30);
+  }
+  .save svg{width:16px;height:16px;}
+
+  .head{display:flex;justify-content:space-between;align-items:flex-start;}
+  .logo .nm{font-family:var(--serif);font-size:25px;font-weight:800;letter-spacing:-.01em;}
+  .logo .nm .o{color:var(--primary);}
+  .logo .tag{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;margin-top:2px;}
+  .meta{text-align:right;font-size:11.5px;color:var(--body);line-height:1.75;}
+  .meta b{color:var(--ink);font-weight:700;}
+
+  .rule{height:2px;background:var(--ink);margin:16px 0 0;}
+
+  .title{margin-top:22px;}
+  .title .eb{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);margin-bottom:9px;}
+  .title h1{font-family:var(--serif);font-size:44px;font-weight:600;letter-spacing:-.02em;line-height:1;margin:0;}
+  .who{display:flex;gap:50px;margin-top:16px;}
+  .who .b{font-size:12.5px;line-height:1.6;}
+  .who .lb{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:5px;}
+  .who .b strong{color:var(--ink);font-weight:700;}
+  .who .b span{color:var(--body);}
+
+  .intro{margin-top:18px;font-size:13.5px;color:var(--body);line-height:1.6;max-width:158mm;}
+
+  table{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px;}
+  thead th{text-align:left;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;padding:0 0 10px;border-bottom:2px solid var(--ink);}
+  thead th.r,tbody td.r{text-align:right;}
+  tbody td{padding:11px 0;border-bottom:1px solid var(--line);color:var(--body);vertical-align:top;}
+  tbody td .it{color:var(--ink);font-weight:700;font-size:14px;}
+  tbody td .de{color:var(--muted);font-size:12px;margin-top:3px;line-height:1.45;max-width:108mm;}
+  tbody td.r{font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:10px;}
+
+  .totals{margin-top:18px;margin-left:auto;width:78mm;font-size:13px;}
+  .totals .row{display:flex;justify-content:space-between;padding:7px 0;color:var(--body);}
+  .totals .row.g{border-top:2px solid var(--ink);margin-top:6px;padding-top:13px;}
+  .totals .row.g .k{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);}
+  .totals .row.g .v{font-family:var(--serif);font-size:22px;font-weight:800;color:var(--primary);}
+  .totals .v{font-variant-numeric:tabular-nums;}
+
+  .terms{margin-top:22px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+  .terms .t .lb{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);font-weight:800;margin-bottom:6px;}
+  .terms .t p{font-size:12px;color:var(--body);line-height:1.55;margin:0;}
+
+  .sign{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-top:26px;}
+  .sign .note{font-size:11px;color:var(--muted);line-height:1.6;max-width:92mm;}
+  .sign .who2{text-align:right;}
+  .sign .who2 .l{width:54mm;border-bottom:1.5px solid var(--ink);margin-bottom:7px;margin-left:auto;}
+  .sign .who2 .nm{font-size:13.5px;font-weight:800;color:var(--ink);}
+  .sign .who2 .rl{font-size:11px;color:var(--muted);font-weight:600;}
+
+  .foot{margin-top:16px;padding-top:11px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);font-weight:600;}
+
+  @page{size:A4;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .save{display:none;}
+    .page{box-shadow:none;margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<button class="save" onclick="print()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 17H4a2 2 0 01-2-2v-2a2 2 0 012-2h16a2 2 0 012 2v2a2 2 0 01-2 2h-2"/></svg>
+  Salva come PDF
+</button>
+
+<section class="page">
+  <div class="head">
+    <div class="logo">
+      <div class="nm">Atelier N<span class="o">o</span>ve</div>
+      <div class="tag">studio di design e siti web</div>
+    </div>
+    <div class="meta">
+      Preventivo <b>n. 2026-014</b><br>
+      Data: <b>18 giugno 2026</b><br>
+      Valido fino al: <b>18 luglio 2026</b>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="title">
+    <div class="eb">Preventivo</div>
+    <h1>Sito web e identita</h1>
+  </div>
+
+  <div class="who">
+    <div class="b">
+      <div class="lb">Da</div>
+      <strong>Atelier Nove di Sara Conti</strong><br>
+      <span>Via dei Coronari 12, Roma<br>P.IVA 0000000000<br>ciao@ateliernove.example</span>
+    </div>
+    <div class="b">
+      <div class="lb">Per</div>
+      <strong>Caffe Aurora</strong><br>
+      <span>Piazza San Cosimato 4, Roma<br>Alla c.a. di Marco Vinci<br>info@caffeaurora.example</span>
+    </div>
+  </div>
+
+  <p class="intro">Grazie per la fiducia. Di seguito la proposta per il nuovo sito di Caffe
+  Aurora: una pagina unica, elegante e veloce, con menu, galleria e prenotazione. Tutto
+  pensato per essere aggiornato in autonomia, senza costi ricorrenti di piattaforma.</p>
+
+  <table>
+    <thead>
+      <tr><th>Voce</th><th class="r">Quantita</th><th class="r">Importo</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="it">Identita visiva leggera</div><div class="de">palette, scelta dei caratteri e logotipo essenziale per il web</div></td>
+        <td class="r">1</td><td class="r">450,00 EUR</td>
+      </tr>
+      <tr>
+        <td><div class="it">Disegno del sito</div><div class="de">una pagina, sezioni menu, storia, galleria e contatti</div></td>
+        <td class="r">1</td><td class="r">900,00 EUR</td>
+      </tr>
+      <tr>
+        <td><div class="it">Sviluppo e messa online</div><div class="de">sito statico veloce, dominio collegato, modulo prenotazione</div></td>
+        <td class="r">1</td><td class="r">750,00 EUR</td>
+      </tr>
+      <tr>
+        <td><div class="it">Contenuti e foto</div><div class="de">impaginazione dei testi e ottimizzazione di 20 fotografie</div></td>
+        <td class="r">1</td><td class="r">300,00 EUR</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <div class="row"><span class="k">Imponibile</span><span class="v">2.400,00 EUR</span></div>
+    <div class="row"><span class="k">IVA 22%</span><span class="v">528,00 EUR</span></div>
+    <div class="row g"><span class="k">Totale</span><span class="v">2.928,00 EUR</span></div>
+  </div>
+
+  <div class="terms">
+    <div class="t">
+      <div class="lb">Tempi</div>
+      <p>Tre settimane dalla conferma e dalla consegna dei materiali.</p>
+    </div>
+    <div class="t">
+      <div class="lb">Pagamento</div>
+      <p>40% all'avvio, saldo alla messa online. Bonifico a 15 giorni.</p>
+    </div>
+    <div class="t">
+      <div class="lb">Incluso</div>
+      <p>Due giri di revisione e una mezza giornata di formazione.</p>
+    </div>
+  </div>
+
+  <div class="sign">
+    <div class="note">Preventivo indicativo, valido 30 giorni. I costi di dominio
+    (circa 12 EUR l'anno) sono a parte e restano intestati al cliente.</div>
+    <div class="who2">
+      <div class="l"></div>
+      <div class="nm">Per accettazione</div>
+      <div class="rl">Caffe Aurora</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Atelier Nove</span>
+    <span>fatto con claude-pdf</span>
+  </div>
+</section>
+
+</body>
+</html>

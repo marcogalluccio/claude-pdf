@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Template A4 - claude-pdf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ====== BRAND KIT: change these three values and the document is yours ====== */
+  :root{
+    --primary:#2563EB;          /* main brand color */
+    --secondary:#7C3AED;        /* accent color */
+    --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    /* fixed palette, usually left as is */
+    --cream:#F7F6F2; --ink:#15151b; --body:#4a4a52; --muted:#9a9aa2; --line:#e6e3db;
+    --grad:linear-gradient(135deg,var(--primary),var(--secondary));
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#dedbd3;font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased;padding:24px 0;}
+
+  .page{
+    width:210mm;min-height:297mm;background:var(--cream);margin:0 auto 24px;
+    padding:18mm 18mm 16mm;position:relative;box-shadow:0 14px 44px rgba(0,0,0,.16);
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+
+  /* save-as-pdf button: visible on screen, hidden in print */
+  .save{
+    position:fixed;top:16px;right:16px;z-index:50;font:600 14px var(--font);
+    display:inline-flex;align-items:center;gap:8px;padding:11px 17px;cursor:pointer;
+    background:var(--grad);color:#fff;border:0;border-radius:10px;
+    box-shadow:0 10px 26px rgba(37,99,235,.30);
+  }
+  .save svg{width:16px;height:16px;}
+
+  /* header */
+  .head{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--line);}
+  .logo{display:flex;align-items:center;gap:11px;}
+  .mark{width:34px;height:34px;border-radius:9px;background:var(--grad);}
+  .logo .ln{font-size:16px;font-weight:800;letter-spacing:-.01em;}
+  .logo .ls{font-size:11.5px;color:var(--muted);font-weight:600;}
+  .meta{text-align:right;font-size:11.5px;color:var(--muted);line-height:1.7;font-weight:600;}
+
+  /* title block */
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--secondary);margin:26px 0 8px;}
+  h1{font-size:38px;line-height:1.05;font-weight:900;letter-spacing:-.025em;margin:0 0 12px;}
+  .lead{font-size:14.5px;color:var(--body);line-height:1.55;max-width:150mm;margin:0;}
+
+  /* generic section */
+  .sec{margin-top:26px;}
+  h2{font-size:15px;font-weight:800;letter-spacing:-.01em;margin:0 0 10px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);}
+  h2 .bar{display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--grad);vertical-align:middle;margin-right:9px;}
+  p{font-size:13.5px;color:var(--body);line-height:1.6;margin:0 0 10px;}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px;}
+  thead th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800;padding:0 0 9px;border-bottom:2px solid var(--ink);}
+  thead th.r,tbody td.r{text-align:right;}
+  tbody td{padding:11px 0;border-bottom:1px solid var(--line);color:var(--body);vertical-align:top;}
+  tbody td .it{color:var(--ink);font-weight:700;font-size:13.5px;}
+  tbody td .de{color:var(--muted);font-size:12px;margin-top:2px;}
+  tfoot td{padding:14px 0 0;font-weight:900;font-size:16px;color:var(--ink);}
+  tfoot td.r{color:var(--primary);}
+
+  /* signature / footer */
+  .sign{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-top:22px;}
+  .sign .note{font-size:11.5px;color:var(--muted);line-height:1.6;max-width:95mm;}
+  .sign .who{text-align:right;}
+  .sign .who .nm{font-size:14px;font-weight:800;color:var(--ink);}
+  .sign .who .li{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:2px;}
+  .foot{margin-top:14px;padding-top:11px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);font-weight:600;}
+
+  @page{size:A4;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .save{display:none;}
+    .page{box-shadow:none;margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<button class="save" onclick="print()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 17H4a2 2 0 01-2-2v-2a2 2 0 012-2h16a2 2 0 012 2v2a2 2 0 01-2 2h-2"/></svg>
+  Salva come PDF
+</button>
+
+<section class="page">
+  <div class="head">
+    <div class="logo">
+      <div class="mark"></div>
+      <div>
+        <div class="ln">Il tuo logo</div>
+        <div class="ls">la riga sotto al nome</div>
+      </div>
+    </div>
+    <div class="meta">
+      Documento n. 000<br>
+      Data: gg/mm/aaaa<br>
+      Pagina 1 di 1
+    </div>
+  </div>
+
+  <p class="eyebrow">Tipo di documento</p>
+  <h1>Titolo del documento</h1>
+  <p class="lead">Questo e il template A4 di claude-pdf. Cambi due colori e un font in
+  cima al file e diventa il tuo. Ogni blocco qui sotto e un mattone riusabile: intestazione,
+  testo, tabella, firma, pie di pagina.</p>
+
+  <div class="sec">
+    <h2><span class="bar"></span>Una sezione di testo</h2>
+    <p>Un concetto per sezione, titoli brevi, molto respiro. Il corpo del testo resta su una
+    misura leggibile e con interlinea generosa. Niente trattini lunghi, look pulito.</p>
+  </div>
+
+  <div class="sec">
+    <h2><span class="bar"></span>Una tabella</h2>
+    <table>
+      <thead>
+        <tr><th>Voce</th><th class="r">Quantita</th><th class="r">Importo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="it">Prima voce</div><div class="de">una breve descrizione della voce</div></td>
+          <td class="r">1</td><td class="r">000 EUR</td>
+        </tr>
+        <tr>
+          <td><div class="it">Seconda voce</div><div class="de">una breve descrizione della voce</div></td>
+          <td class="r">2</td><td class="r">000 EUR</td>
+        </tr>
+        <tr>
+          <td><div class="it">Terza voce</div><div class="de">una breve descrizione della voce</div></td>
+          <td class="r">1</td><td class="r">000 EUR</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Totale</td><td></td><td class="r">000 EUR</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="sign">
+    <div class="note">Note, condizioni o termini in piccolo. Una o due righe bastano,
+    restano discrete in fondo alla pagina senza rubare attenzione al contenuto.</div>
+    <div class="who">
+      <div class="nm">Nome e cognome</div>
+      <div class="li">ruolo o recapito</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Il tuo logo</span>
+    <span>fatto con claude-pdf</span>
+  </div>
+</section>
+
+</body>
+</html>
