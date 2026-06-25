@@ -52,9 +52,12 @@
   .btn svg{width:17px;height:17px;}
   .hero .micro{font-size:13px;color:var(--muted);margin-top:16px;}
   .hero .micro b{color:var(--body);font-weight:600;}
+  .hero .seelink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:700;
+    color:var(--accent-d);text-decoration:none;}
+  .hero .seelink:hover{color:var(--accent);}
 
   /* browser frame */
-  .frame-wrap{max-width:900px;margin:46px auto 0;padding:0 4px;}
+  .frame-wrap{max-width:900px;margin:46px auto 0;padding:0 4px;scroll-margin-top:80px;}
   .frame{background:#efe7d8;border:1px solid var(--line);border-radius:16px 16px 0 0;
     box-shadow:var(--shadow-lg);overflow:hidden;border-bottom:0;}
   .frame .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#efe7d8;border-bottom:1px solid var(--line);}
@@ -187,7 +190,7 @@
   <div class="wrap">
     <p class="eyebrow">PDF con Claude &middot; HTML &middot; open source</p>
     <h1>Fai i PDF con Claude. <br>Passando dall'<span class="grad-text">HTML.</span></h1>
-    <p class="sub">Preventivi, proposte, one-pager, CV. Non chiedere un PDF: chiedi l'HTML, dagli il tuo brand kit, poi clicchi "Salva come PDF". Li costruisci con Claude.</p>
+    <p class="sub">Preventivi, proposte, one-pager, CV. Non chiedere un PDF: chiedi l'HTML, dagli il tuo brand kit, poi clicchi "Salva come PDF".</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="guida/claude-pdf-guida.pdf" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
@@ -198,10 +201,11 @@
         Come si fa
       </a>
     </div>
+    <a class="seelink" href="#esempio">Guarda il documento di esempio &#8595;</a>
     <p class="micro">Gratis e open source &middot; <b>la guida sono 2 pagine</b>, vai subito &middot; funziona anche su claude.ai gratis</p>
   </div>
 
-  <div class="frame-wrap">
+  <div class="frame-wrap" id="esempio">
     <div class="frame">
       <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i>
         <span class="url">preventivo.html &middot; lo apri nel browser e clicchi "Salva come PDF"</span></div>
@@ -213,6 +217,18 @@
   </div>
   <div class="frame-fade"></div>
 </header>
+
+<!-- QUICK START (spostato su dalla sezione dei 3 modi) -->
+<section class="wrap">
+  <div class="oneliner">
+    <div class="olt">
+      <span class="ollbl">Parti subito, zero download</span>
+      <button class="olcopy" onclick="copyLine(this)">Copia</button>
+    </div>
+    <code id="ol"><span class="kw">read</span> https://claude-pdf.vercel.app/skill.md <span class="kw">and help me make a PDF</span></code>
+    <p class="olh">Incollala a Claude (claude.ai, Cowork o Code): legge il metodo e parte da li.</p>
+  </div>
+</section>
 
 <!-- WHAT YOU GET -->
 <section class="blk wrap">
@@ -231,7 +247,7 @@
     </div>
     <div class="fcard">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="11.5" r="2.5"/><circle cx="17" cy="14" r="2.5"/><path d="M9 11l2-2M9 13l5 1"/></svg></div>
-      <h3>Il tuo brand kit</h3>
+      <h3>Aggiungi il tuo brand kit</h3>
       <p>Due colori e un font in cima al file. Li dai a Claude e il documento diventa tuo, senza toccare il resto.</p>
     </div>
     <div class="fcard">
@@ -258,21 +274,12 @@
   <h2 class="sech">Tre modi, dal piu semplice</h2>
   <p class="secsub">Non sai quale Claude usi? Allega la guida a Claude e chiediglielo: te lo dice lui.</p>
 
-  <div class="oneliner">
-    <div class="olt">
-      <span class="ollbl">Parti subito, zero download</span>
-      <button class="olcopy" onclick="copyLine(this)">Copia</button>
-    </div>
-    <code id="ol"><span class="kw">read</span> https://claude-pdf.vercel.app/skill.md <span class="kw">and help me make a PDF</span></code>
-    <p class="olh">Incollala a Claude (claude.ai, Cowork o Code): legge il metodo e parte da li.</p>
-  </div>
-
   <div class="surf">
     <div class="scard">
       <div class="snum">1</div>
       <h3>claude.ai</h3>
       <p class="who">Sito o app &middot; il piu comune</p>
-      <p><b>Incolla la riga</b> qui sopra, oppure allega la guida e chiedi il documento. Claude genera l'HTML, tu lo apri e <b>clicchi "Salva come PDF"</b>.</p>
+      <p><b>Incolla la riga</b> in alto, oppure allega la guida e chiedi il documento. Claude genera l'HTML, tu lo apri e <b>clicchi "Salva come PDF"</b>.</p>
       <a class="sbtn" href="guida/claude-pdf-guida.pdf" download>Scarica la guida (PDF) &#8599;</a>
     </div>
     <div class="scard">
@@ -308,7 +315,7 @@
   <div class="band master">
     <div class="bt">
       <p class="bl">Master Claude</p>
-      <h3>Vuoi imparare a costruire cose cosi?</h3>
+      <h3>Vuoi imparare a costruire con l'AI agentica?</h3>
       <p>Questi PDF nascono da un metodo: una conversazione con Claude, un file, zero tool. Nel corso Master Claude te lo insegno dal vivo, partendo da zero.</p>
     </div>
     <a class="bbtn" href="https://masterclaude.school" target="_blank" rel="noopener">Scopri il corso &#8594;</a>
