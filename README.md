@@ -9,7 +9,7 @@ looks right, one click saves it as a PDF.
 ## Which Claude do you use? / Quale Claude usi?
 
 - **claude.ai** (site or app): paste
-  `read https://claude-pdf.vercel.app/skill.md and help me make a PDF`, or attach the
+  `leggi https://claude-pdf.vercel.app/skill.md e aiutami a fare un PDF`, or attach the
   guide PDF. Claude generates the HTML, you open it and click "Save as PDF".
 - **Cowork**: paste the same line, Claude writes the file and hands it over.
 - **Claude Code**: clone this repo or paste its link, use `template.html` as the base.

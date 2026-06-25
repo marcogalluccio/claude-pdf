@@ -225,7 +225,7 @@
       <span class="ollbl">Parti subito, zero download</span>
       <button class="olcopy" onclick="copyLine(this)">Copia</button>
     </div>
-    <code id="ol"><span class="kw">read</span> https://claude-pdf.vercel.app/skill.md <span class="kw">and help me make a PDF</span></code>
+    <code id="ol"><span class="kw">leggi</span> https://claude-pdf.vercel.app/skill.md <span class="kw">e aiutami a fare un PDF</span></code>
     <p class="olh">Incollala a Claude (claude.ai, Cowork o Code): legge il metodo e parte da li.</p>
   </div>
 </section>
@@ -346,7 +346,7 @@
 
 <script>
   function copyLine(btn){
-    var t="read https://claude-pdf.vercel.app/skill.md and help me make a PDF";
+    var t="leggi https://claude-pdf.vercel.app/skill.md e aiutami a fare un PDF";
     navigator.clipboard.writeText(t).then(function(){
       var o=btn.textContent; btn.textContent="Copiato"; setTimeout(function(){btn.textContent=o;},1500);
     });
