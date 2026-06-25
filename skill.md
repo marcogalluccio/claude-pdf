@@ -26,8 +26,8 @@ with a built-in "Save as PDF" button. Never output a binary PDF directly.
 4. Print rules so the PDF comes out clean:
    `@page{ size:A4; margin:0 }` plus `@media print{ .save{display:none} ... }`.
 5. Brand kit at the top: CSS variables for two colors and one font. Changing those
-   three values rebrands the whole document. Ask the user for brand colors; if there
-   are none, pick a tasteful default.
+   three values rebrands the whole document. Take the colors and font from the
+   interview (a brand kit, a reference, or a tasteful default).
 6. One idea per section. Short headings. A clear type scale. Page numbers if the
    document runs to more than one page.
 7. Editorial look: generous whitespace, a thin accent rule, aligned columns for any
@@ -36,12 +36,35 @@ with a built-in "Save as PDF" button. Never output a binary PDF directly.
 
 ## Workflow
 
-1. Ask what the document is, who it is for, the content, and the brand colors
-   (optional).
-2. Propose a short structure, then generate the HTML.
-3. Tell the user: open the file in a browser, click "Save as PDF", and choose
+Run a short interview first, one question at a time, in the user's language. Do not
+generate the document until you have the answers (or the user says to just go).
+
+1. What and for whom. Ask what the document is (a quote, a proposal, a one-pager, a CV,
+   a report, an invoice, a letter) and who will read it. Skip if already known.
+2. Style. Offer this small menu and let the user pick one word:
+   - Minimal: clean sans, lots of whitespace, a thin accent rule, no fills. (Inter)
+   - Editorial: serif headings, a magazine feel, generous line spacing. (Fraunces + Inter)
+   - Corporate: structured, a solid color header band, a sober sans. (IBM Plex Sans)
+   - Bold: large display headings, strong color blocks, high contrast. (Space Grotesk)
+   - Elegant: a refined serif, a centered title, hairline rules, classic. (Cormorant)
+   Map the chosen word to the font, spacing and accent treatment. If the user is unsure,
+   suggest Minimal.
+3. Brand kit or reference. Ask: "Do you have a brand kit or a reference I can match? It
+   can be a website, an image, a logo, any graphic material. Paste it here, or just tell
+   me your two main colors. If you have nothing, I will pick a tasteful default."
+   - If the user gives a link or an image, look at it, pull two colors, one font and the
+     overall vibe, then confirm: "From this I would use [color], [color], the font [name],
+     a [vibe] feel. Good?"
+   - If you cannot open it on this surface, say so and ask the user to paste the colors or
+     describe the look.
+   - The reference sets the brand (the two colors and, if it is clear, the font). The style
+     from step 2 sets the layout treatment. With no reference, the style also picks a
+     tasteful default palette.
+4. Build. Propose a one-line structure, then generate the single self-contained A4 HTML
+   file with the Save as PDF button, branded with the chosen colors and font.
+5. Tell the user: open the file in a browser, click "Save as PDF", and choose
    "Save as PDF" as the print destination. Then iterate on the HTML until it is right.
-4. Optional: once it looks right, save the recipe as a reusable skill so the next
+6. Optional: once it looks right, save the recipe as a reusable skill so the next
    document comes out the same way.
 
 By surface:
