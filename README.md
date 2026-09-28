@@ -9,7 +9,7 @@ looks right, one click saves it as a PDF.
 ## Which Claude do you use? / Quale Claude usi?
 
 - **claude.ai** (site or app): paste
-  `leggi https://claude-pdf.vercel.app/skill.md e aiutami a fare un PDF`, or attach the
+  `leggi https://marcogalluccio.com/claude-pdf/skill.md e aiutami a fare un PDF`, or attach the
   guide PDF. Claude generates the HTML, you open it and click "Save as PDF".
 - **Cowork**: paste the same line, Claude writes the file and hands it over.
 - **Claude Code**: clone this repo or paste its link, use `template.html` as the base.
@@ -20,6 +20,6 @@ looks right, one click saves it as a PDF.
 - `template.html` - a polished, neutral A4 template. Change two colors and one font.
 - `examples/preventivo.html` - a filled example (synthetic data).
 - `guida/claude-pdf-guida.pdf` - a 2-page guide (Italian).
-- `index.html` - the landing page (claude-pdf.vercel.app).
+- `index.html` - the landing page (marcogalluccio.com/claude-pdf).
 
 MIT licensed. Made with Claude by Marco Galluccio.
